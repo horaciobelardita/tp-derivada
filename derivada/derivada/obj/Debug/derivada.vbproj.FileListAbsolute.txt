@@ -1,0 +1,10 @@
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\bin\Debug\derivada.exe.config
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\bin\Debug\derivada.exe
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\bin\Debug\derivada.pdb
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\bin\Debug\derivada.xml
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.vbprojResolveAssemblyReference.cache
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.Resources.resources
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.vbproj.GenerateResource.Cache
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.exe
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.xml
+c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.pdb
