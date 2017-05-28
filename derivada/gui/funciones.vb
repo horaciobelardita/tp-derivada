@@ -66,7 +66,7 @@
             ' x^2 => -1
             ' x^(1/2)
             Dim c As String
-            If finCoeficiente = 0 Then
+            If finCoeficiente <= 0 Then
                 c = termino.Substring(inicio, 1)
             ElseIf inicio = 0 Then
                 c = termino.Substring(inicio, finCoeficiente + 1)
