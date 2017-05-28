@@ -53,24 +53,34 @@
         Else
             inicio = 0
         End If
-        For i = inicio To termino.Length - 1
-            If Not Char.IsNumber(termino(i)) Then
-                finCoeficiente = i - 1
-                Exit For
+        If termino = "x" Then
+            coeficiente = 1
+        Else
+            For i = inicio To termino.Length - 1
+                If Not Char.IsNumber(termino(i)) Then
+                    finCoeficiente = i - 1
+                    Exit For
+                End If
+            Next
+            ' 2x => 0
+            ' +20x^2 => 1
+            ' x^2 => -1
+            ' x^(1/2)
+            Dim c As String
+            If finCoeficiente = 0 Then
+                c = termino.Substring(inicio, 1)
+            ElseIf inicio = 0 Then
+                c = termino.Substring(inicio, finCoeficiente + 1)
+            Else
+                c = termino.Substring(inicio, finCoeficiente)
+
             End If
-        Next
-        ' 2x => 0
-        ' +20x^2 => 1
-        ' x^2 => -1
-        ' x^(1/2)
-        Select Case finCoeficiente
-            Case 0
-                coeficiente = termino.Substring(inicio, 1)
-            Case >= 1
-                coeficiente = termino.Substring(inicio, finCoeficiente)
-            Case -1
+            If c = "x" Then
                 coeficiente = 1
-        End Select
+            Else
+                coeficiente = c
+            End If
+        End If
         If termino.IndexOf("^") >= 0 And termino.IndexOf("(") < 0 Then
             potencia = termino.Substring(termino.IndexOf("^") + 1)
         ElseIf termino.IndexOf("x") >= 0 And termino.IndexOf("^") < 0 Then
@@ -142,58 +152,57 @@
         If Not salida.Trim().Length > 0 Then
             Return "0"
         End If
+        ' para darle formato a la salida unicamente
         If salida(1) = "+" Then
             Return salida.Substring(3)
+        ElseIf salida(1) = "-" Then
+            Return salida(1) & salida.Substring(3)
+        ElseIf salida(0) = " " Then
+            Return salida.Substring(1)
         End If
         Return salida
     End Function
 
 
     Private Function formatear(funcion As String) As String
-        ' (2x^2+2)/5
+        ' 3x^-2+10x^(1/2)-5
         Dim salida As String = ""
-        Dim comienzaParentesis As Boolean = False
         Dim j As Byte = 0
-        If funcion.StartsWith("(") Then
-            comienzaParentesis = True
-        End If
         For i = 0 To funcion.Length - 1
-            If funcion.ElementAt(i) = "-" Or funcion(i) = "+" Or funcion(i) = ")" Then
-                If Not (funcion(i - 1) = "^" Or funcion(i - 1) = "(") And Not comienzaParentesis Then
-                    salida += funcion.Substring(j, i - j + 1) & " "
+            If (funcion(i) = "-" Or funcion(i) = "+") And i > 1 Then
+                If funcion(i - 1) <> "^" Then
+                    salida += funcion.Substring(j, i - j) & " "
                     j = i
-                ElseIf funcion(i) = ")" And comienzaParentesis Then
-                    salida += funcion.Substring(j, i - j + 1) & " "
-                    j = i + 1
                 End If
             End If
         Next
+        ' ultimo termino
         salida += funcion.Substring(j, funcion.Length - j)
         Return salida
+
     End Function
     Sub Main()
-	' derivar es la funcion principal
-        'Console.WriteLine(formatear("2x^2+2"))
-        'Console.WriteLine(formatear("2x^2+2x"))
-        'Console.WriteLine(formatear("cos(2x)^2+3x"))
-        'Console.WriteLine(formatear("2x"))
-        'Console.WriteLine(derivarTermino("10", "2", True))
-        'Console.WriteLine(fraccionADecimal("1/2"))
-        'Console.WriteLine(fraccionADecimal("10/2"))
-        'Console.WriteLine("Derivadas")
-        'Console.WriteLine(derivar("2x"))
-        'Console.WriteLine(derivar("2x^4"))
-        'Console.WriteLine(derivar("10"))
-        'Console.WriteLine(derivar("3x^5+10x+50x^3"))
-        'Console.WriteLine(derivar("x^(1/2)"))
-        'Dim fx, gx As String
-        'fx = ""
-        'gx = ""
-        'subTermino("cos(2x)", fx, gx)
-        'Console.WriteLine(fx & " " & gx)
-        'Console.WriteLine(derivar("cos(2x)+5"))
-        'Console.WriteLine(derivar("(2x^2+2)/5"))
-        Console.WriteLine(formatear("cos(2x)^3+35x"))
+        ' algunos test de la funcion formatear
+        Console.WriteLine("Test formatear")
+        Console.WriteLine(formatear("3x^-2+10x^(1/2)-5"))
+        Console.WriteLine(formatear("2x+5"))
+        Console.WriteLine(formatear("2x^4+x^3-x^2+4"))
+        Console.WriteLine(formatear("-2x^2-5"))
+        Console.WriteLine(formatear("-10x"))
+        Console.WriteLine(formatear("10x"))
+        Console.WriteLine(formatear("x"))
+        Console.WriteLine()
+
+        ' algunos test de la funcion derivar
+        Console.WriteLine("Test derivar")
+        Console.WriteLine(derivar("3x^-2+10x^(1/2)-5"))
+        Console.WriteLine(derivar("2x+5"))
+        Console.WriteLine(derivar("2x^4+x^3-x^2+4"))
+        Console.WriteLine(derivar("-2x^2-5"))
+        Console.WriteLine(derivar("-10x"))
+        Console.WriteLine(derivar("10x"))
+        Console.WriteLine(derivar("x"))
+
         Console.ReadLine()
     End Sub
 

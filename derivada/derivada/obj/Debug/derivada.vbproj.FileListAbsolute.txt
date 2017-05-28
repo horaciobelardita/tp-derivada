@@ -8,3 +8,13 @@ c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\D
 c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.exe
 c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.xml
 c:\users\belardita\documents\visual studio 2017\Projects\derivada\derivada\obj\Debug\derivada.pdb
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\bin\Debug\derivada.exe.config
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\bin\Debug\derivada.exe
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\bin\Debug\derivada.pdb
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\bin\Debug\derivada.xml
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\obj\Debug\derivada.vbprojResolveAssemblyReference.cache
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\obj\Debug\derivada.Resources.resources
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\obj\Debug\derivada.vbproj.GenerateResource.Cache
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\obj\Debug\derivada.exe
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\obj\Debug\derivada.xml
+C:\Users\Belardita\Source\Repos\tp-derivada\derivada\derivada\obj\Debug\derivada.pdb
