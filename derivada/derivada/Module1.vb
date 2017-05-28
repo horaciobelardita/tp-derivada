@@ -128,7 +128,7 @@
     End Function
 
 
-    Private Function derivar(funcion As String) As String
+    Friend Function derivar(funcion As String) As String
         Dim salida As String = ""
         Dim terminos As String()
         Dim dx As String
