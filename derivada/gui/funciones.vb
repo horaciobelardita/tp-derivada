@@ -1,4 +1,22 @@
 ﻿Module funciones
+
+
+    Friend Function stringAFuncion(fx As String, x As Single) As Single
+        Dim i As Integer = 0
+        While i < fx.Length
+            If fx(i) = "x" Then
+                fx = fx.Insert(i, "*")
+                i = i + 1
+            End If
+            i += 1
+        End While
+        fx = fx.Replace("x", "(" & x.ToString & ")")
+        fx = fx.Replace(",", ".")
+        Dim sc As New MSScriptControl.ScriptControl
+        sc.Language = "VBScript"
+        Return Convert.ToSingle(sc.Eval(fx))
+    End Function
+
     Private Function fraccionADecimal(fraccion As String) As Single
         ' 15/2
         Dim inicio As Byte = 0
