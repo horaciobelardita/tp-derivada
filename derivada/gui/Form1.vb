@@ -1,8 +1,10 @@
 ﻿Public Class Form1
+
+    Private funcion As Funcion
+    Private derivada As String
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim funcion, derivada As String
-        funcion = txtFuncion.Text
-        derivada = derivar(funcion)
+        funcion = New Funcion(txtFuncion.Text)
+        derivada = funcion.derivar()
         txtDerivada.Text = derivada
         btnGraficar.Enabled = True
     End Sub
@@ -19,15 +21,15 @@
         Me.Chart1.Series(0).BorderWidth = 2
         Me.Chart1.Series(1).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
         Me.Chart1.Series(1).BorderWidth = 2
-
+        Dim dx As New Funcion(derivada)
         Dim puntosX As New ArrayList
         Dim puntosYFuncion As New ArrayList
         Dim puntosYDerivada As New ArrayList
         Dim x As Single = -30
         Dim nroPuntos As Short = 1000
         For i = 0 To nroPuntos
-            Dim puntoYFuncion As Single = stringAFuncion(txtFuncion.Text, x)
-            Dim puntoYDerivada As Single = stringAFuncion(txtDerivada.Text, x)
+            Dim puntoYFuncion As Single = funcion.evaluar(x)
+            Dim puntoYDerivada As Single = dx.evaluar(x)
             puntosYFuncion.Add(puntoYFuncion)
             puntosYDerivada.Add(puntoYDerivada)
             puntosX.Add(x)
