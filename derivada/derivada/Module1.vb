@@ -75,7 +75,7 @@
                 c = termino.Substring(inicio, finCoeficiente)
 
             End If
-            If c = "x" Then
+            If c = "x" or c.Length = 0  Then
                 coeficiente = 1
             Else
                 coeficiente = c
@@ -131,19 +131,11 @@
     Friend Function derivar(funcion As String) As String
         Dim salida As String = ""
         Dim terminos As String()
-        Dim dx As String
-        Dim esPositiva As Boolean
+        Dim dx As String        Dim esPositiva As Boolean
         Dim potencia, coeficiente As Single
         funcion = formatear(funcion)
         terminos = funcion.Split()
         For Each termino In terminos
-            If termino.Contains("s") Then
-                Dim fx, gx As String
-                fx = ""
-                gx = ""
-                subTermino(termino, fx, gx)
-                salida += reglaDeLaCadena(fx, gx) & " "
-            Else
                 separar(termino, coeficiente, potencia, esPositiva)
                 dx = derivarTermino(coeficiente, potencia, esPositiva)
                 salida += dx
@@ -169,7 +161,7 @@
         Dim salida As String = ""
         Dim j As Byte = 0
         For i = 0 To funcion.Length - 1
-            If (funcion(i) = "-" Or funcion(i) = "+") And i > 1 Then
+            If (funcion(i) = "-" Or funcion(i) = "+") And i > 0 Then
                 If funcion(i - 1) <> "^" Then
                     salida += funcion.Substring(j, i - j) & " "
                     j = i
