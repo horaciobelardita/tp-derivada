@@ -9,6 +9,7 @@
 
     Private Sub formatear()
         ' 3x^-2+10x^(1/2)-5
+        funcion = limpiarBlancos()
         Dim salida As String = ""
         Dim j As Byte = 0
         For i = 0 To funcion.Length - 1
@@ -24,6 +25,16 @@
         Me.funcion = salida
 
     End Sub
+
+    Private Function limpiarBlancos() As String
+        Dim salida As String = ""
+        For i = 0 To funcion.Length - 1
+            If funcion(i) <> " " Then
+                salida &= funcion(i)
+            End If
+        Next
+        Return salida
+    End Function
 
     Public Function derivar() As String
         Dim salida As String = ""
